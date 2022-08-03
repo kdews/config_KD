@@ -1,0 +1,60 @@
+Wed Aug  3 12:51:01 PDT 2022
+git version 1.8.3.1
+User: kdews 
+Auto-commit: Wed Aug  3 12:51:01 PDT 2022
+/home1/kdeweese/scripts/m-pyrifera-plastid-assembly
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/m-pyrifera-plastid-assembly.git
+To git@github.com:kdews/m-pyrifera-plastid-assembly.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-de
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-de.git
+To git@github.com:kdews/s-latissima-de.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-mutation-annotation
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-mutation-annotation.git
+To git@github.com:kdews/s-latissima-mutation-annotation.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-organelles
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-organelles.git
+To git@github.com:kdews/s-latissima-organelles.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-polygenic-modeling
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-polygenic-modeling.git
+To git@github.com:kdews/s-latissima-polygenic-modeling.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-popgen
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-popgen.git
+To git@github.com:kdews/s-latissima-popgen.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-transcriptome-assembly
+# On branch main
+nothing to commit, working directory clean
+Pushing to git@github.com:kdews/s-latissima-transcriptome-assembly.git
+To git@github.com:kdews/s-latissima-transcriptome-assembly.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date

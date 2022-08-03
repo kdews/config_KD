@@ -1,0 +1,12 @@
+# User-specific aliases
+#
+alias reload=". ~/.bashrc"
+alias ls="ls -1 --color=auto"
+alias getnode="salloc --time=300:00:00 --ntasks=1 --cpus-per-task=12 --mem-per-cpu=10gb"
+alias smallnode="salloc --time=05:00:00 --mem=10gb"
+alias mainnode="salloc --time=10:00:00 --mem-per-cpu=10gb"
+alias proj="cd /project/noujdine_61/kdeweese"
+alias long="cd /project/noujdine_61/kdeweese/latissima/longreads"
+alias ass="cd /scratch2/kdeweese/latissima/organelles/org_assembly"
+alias pop="cd /scratch2/kdeweese/latissima/organelles/org_pop_gen"
+alias undar="cd /scratch1/mharden/undaria_variation"

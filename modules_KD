@@ -1,0 +1,6 @@
+# User-specific module environment
+#
+# Load most recent git version 
+module -q load gcc/11.3.0 git/2.36.1 >/dev/null 2>&1
+# Load most recent R version
+module -q load gcc/11.3.0 openblas/0.3.20 r/4.2.1 >/dev/null 2>&1

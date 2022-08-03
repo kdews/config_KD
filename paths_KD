@@ -1,0 +1,17 @@
+# Sourcing will add PATHs to the following manually 
+# installed programs to your PATH
+#
+# canu
+export PATH="$PATH:/home1/kdeweese/bin/canu-2.2/bin"
+# fasta_tools
+export PATH="$PATH:/home1/kdeweese/bin/fasta_tools/bin"
+# Organelle_PBA
+export PATH="$PATH:/home1/kdeweese/bin/Organelle_PBA"
+# sspace_longread
+export PATH="$PATH:/home1/kdeweese/bin/sspace_longread"
+# Cp-hap
+export PATH="$PATH:/home1/kdeweese/bin/Cp-hap"
+# HISAT2
+export PATH="$PATH:/home1/kdeweese/bin/hisat2-2.2.1"
+# BBMap
+export PATH="$PATH:/home1/kdeweese/bin/bbmap"
