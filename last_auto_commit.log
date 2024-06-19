@@ -1,7 +1,7 @@
-Wed Aug  3 12:51:01 PDT 2022
+Tue Jun 18 23:00:06 PDT 2024
 git version 1.8.3.1
 User: kdews 
-Auto-commit: Wed Aug  3 12:51:01 PDT 2022
+Auto-commit: Tue Jun 18 23:00:06 PDT 2024
 /home1/kdeweese/scripts/m-pyrifera-plastid-assembly
 # On branch main
 nothing to commit, working directory clean
@@ -18,6 +18,16 @@ To git@github.com:kdews/s-latissima-de.git
  = [up to date]      main -> main
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-genome
+add 'align_venn_diagram.png'
+add 'sum_psls.R'
+[main 3420268] Auto-commit: Tue Jun 18 23:00:06 PDT 2024
+ 2 files changed, 15 insertions(+), 9 deletions(-)
+ rewrite align_venn_diagram.png (99%)
+Pushing to git@github.com:kdews/s-latissima-genome.git
+remote: To git@github.com:kdews/s-latissima-genome.git
+   88886c2..3420268  main -> main
+updating local tracking ref 'refs/remotes/origin/main'
 /home1/kdeweese/scripts/s-latissima-mutation-annotation
 # On branch main
 nothing to commit, working directory clean

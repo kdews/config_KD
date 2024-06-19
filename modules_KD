@@ -1,6 +1,17 @@
 # User-specific module environment
-#
+
+# Clear loaded modules
+module purge >/dev/null 2>&1
+# Load compiler
+module load gcc/11.3.0 >/dev/null 2>&1
+# Load data compression library
+module load zlib >/dev/null 2>&1
+# Load most recent Vim version
+module load vim >/dev/null 2>&1
+#module load vim/8.2.5051 >/dev/null 2>&1
 # Load most recent git version 
-module -q load gcc/11.3.0 git/2.36.1 >/dev/null 2>&1
+module load git >/dev/null 2>&1
 # Load most recent R version
-module -q load gcc/11.3.0 openblas/0.3.20 r/4.2.1 >/dev/null 2>&1
+module load openblas/0.3.20 r >/dev/null 2>&1
+# Load FreeType2
+module load freetype >/dev/null 2>&1
