@@ -5,33 +5,35 @@ date
 
 # Source shortcut git function
 source_file () {
-	if [[ -a $1 ]]
-	then
-		source "$1"
-	else
-		echo "Error on source of $1"
-		exit 1
-	fi
+    if [[ -a $1 ]]
+    then
+        source "$1"
+    else
+        echo "Error on source of $1"
+        exit 1
+    fi
 }
-MODS=~/config_KD/modules_KD
-FUNCS=~/config_KD/functions_KD
+config_dir="$HOME/config_KD"
+MODS="$config_dir/modules_KD"
+FUNCS="$config_dir/functions_KD"
 source_file "$MODS"
 source_file "$FUNCS"
 
 # Run auto-commit on all repositories containing a .git in ~/scripts
 # Only for user set by git config
 # REQUIRED: set git user
-GIT_USR=$(git config user.name)
+GIT_USR="$(git config user.name)"
 # REQUIRED: set auto-commit message
 MESSAGE="Auto-commit: $(date)"
-echo "$(git --version)
-User: $GIT_USR 
-$MESSAGE"
+git --version
+echo "User: $GIT_USR"
+echo "$MESSAGE"
 # REQUIRED: set repository path(s)
-for REPO_PATH in $(grep -l "$GIT_USR" ~/scripts/*/.git/config | sed "s/\\/\\.git.*//g")
+mapfile -t REPOS < <(grep -l "$GIT_USR" ~/scripts/*/.git/config)
+REPOS+=("$config_dir")
+for REPO_PATH in "${REPOS[@]}"
 do
-	echo "$REPO_PATH"
-	cd "$REPO_PATH"
-	gitpublish "$MESSAGE"
+    REPO_PATH="${REPO_PATH%%\.git*}"
+    echo "$REPO_PATH"
+    gitpublish "$MESSAGE" "$REPO_PATH"
 done
-

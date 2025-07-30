@@ -1,3 +1,4 @@
+#!/bin/bash
 # Manage custom BASH prompt
 # Set custom emoji
 emoj="😔 "

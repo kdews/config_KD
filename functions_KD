@@ -1,3 +1,4 @@
+#!/bin/bash
 # User-specific functions
 
 # Function returns path of file in which a given function name is defined
@@ -162,7 +163,8 @@ Automatically starts at 10 years prior to today's date (e.g., $start_date)."
 # Function to list elapsed time in seconds for each job listed by 
 # Slurm 'sacct' for a specific job name
 jobtime () {
-	local start_date="$(olddate)"
+	local start_date
+	start_date="$(olddate)"
 	local hlp="Function to list elapsed times (Elapsed) for each job listed by
 Slurm 'sacct' for a specific job name, sorted from least to greatest.
 

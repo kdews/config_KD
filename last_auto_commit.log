@@ -1,70 +1,81 @@
-Tue Jun 18 23:00:06 PDT 2024
-git version 1.8.3.1
+Thu Jun 26 12:31:09 PDT 2025
+git version 2.45.2
 User: kdews 
-Auto-commit: Tue Jun 18 23:00:06 PDT 2024
-/home1/kdeweese/scripts/m-pyrifera-plastid-assembly
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/m-pyrifera-plastid-assembly.git
-To git@github.com:kdews/m-pyrifera-plastid-assembly.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-de
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-de.git
-To git@github.com:kdews/s-latissima-de.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-genome
-add 'align_venn_diagram.png'
-add 'sum_psls.R'
-[main 3420268] Auto-commit: Tue Jun 18 23:00:06 PDT 2024
- 2 files changed, 15 insertions(+), 9 deletions(-)
- rewrite align_venn_diagram.png (99%)
-Pushing to git@github.com:kdews/s-latissima-genome.git
-remote: To git@github.com:kdews/s-latissima-genome.git
-   88886c2..3420268  main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-/home1/kdeweese/scripts/s-latissima-mutation-annotation
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-mutation-annotation.git
-To git@github.com:kdews/s-latissima-mutation-annotation.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-organelles
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-organelles.git
-To git@github.com:kdews/s-latissima-organelles.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-polygenic-modeling
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-polygenic-modeling.git
-To git@github.com:kdews/s-latissima-polygenic-modeling.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-popgen
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-popgen.git
-To git@github.com:kdews/s-latissima-popgen.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
-/home1/kdeweese/scripts/s-latissima-transcriptome-assembly
-# On branch main
-nothing to commit, working directory clean
-Pushing to git@github.com:kdews/s-latissima-transcriptome-assembly.git
-To git@github.com:kdews/s-latissima-transcriptome-assembly.git
- = [up to date]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
+Auto-commit: Thu Jun 26 12:31:09 PDT 2025
+/home1/kdeweese/scripts/m-pyrifera-plastid-assembly/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/m-pyrifera-sporeless/
+add 'all_eff_bar.png'
+add 'all_eff_impact_type_bar.png'
+add 'all_eff_qc_boxplots.png'
+add 'all_impact_bar.png'
+add 'all_var_qc_boxplots.png'
+add 'compr_idx.sh'
+add 'debug_snpeff.png'
+add 'decompose_vcf.sh'
+add 'drop_gts.sh'
+add 'lof_nmd_filter.sh'
+add 'snpEff.sh'
+add 'sporeless_gk.R'
+add 'sporeless_gk.sh'
+add 'subset_mult.sh'
+add 'vcf_prep.sh'
+[main c4c1744] Auto-commit: Thu Jun 26 12:31:09 PDT 2025
+ 15 files changed, 1281 insertions(+)
+ create mode 100644 all_eff_bar.png
+ create mode 100644 all_eff_impact_type_bar.png
+ create mode 100644 all_eff_qc_boxplots.png
+ create mode 100644 all_impact_bar.png
+ create mode 100644 all_var_qc_boxplots.png
+ create mode 100644 compr_idx.sh
+ create mode 100644 debug_snpeff.png
+ create mode 100644 decompose_vcf.sh
+ create mode 100644 drop_gts.sh
+ create mode 100644 lof_nmd_filter.sh
+ create mode 100644 snpEff.sh
+ create mode 100644 sporeless_gk.R
+ create mode 100644 sporeless_gk.sh
+ create mode 100644 subset_mult.sh
+ create mode 100644 vcf_prep.sh
+/home1/kdeweese/scripts/s-latissima-de/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/s-latissima-genome/
+add 'busco_compare.sbatch'
+[main e6a0ae0] Auto-commit: Thu Jun 26 12:31:09 PDT 2025
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+/home1/kdeweese/scripts/s-latissima-mutation-annotation/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/s-latissima-organelles/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/s-latissima-polygenic-modeling/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/s-latissima-popgen/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/s-latissima-transcriptome-assembly/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+/home1/kdeweese/scripts/testwitjo/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean

@@ -1,17 +1,13 @@
+#!/bin/bash
 # User-specific module environment
 
 # Clear loaded modules
-module purge >/dev/null 2>&1
-# Load compiler
-module load gcc/11.3.0 >/dev/null 2>&1
-# Load data compression library
-module load zlib >/dev/null 2>&1
+# module purge >/dev/null 2>&1
+# Load data compression library (in USC default now)
+# module load zlib >/dev/null 2>&1
 # Load most recent Vim version
-module load vim >/dev/null 2>&1
-#module load vim/8.2.5051 >/dev/null 2>&1
+module --latest load vim >/dev/null 2>&1
 # Load most recent git version 
-module load git >/dev/null 2>&1
+module --latest load git >/dev/null 2>&1
 # Load most recent R version
-module load openblas/0.3.20 r >/dev/null 2>&1
-# Load FreeType2
-module load freetype >/dev/null 2>&1
+# module load r >/dev/null 2>&1
