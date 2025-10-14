@@ -1,7 +1,7 @@
 #!/bin/bash
 # User-specific aliases
 alias vi="vim"
-alias reload=". ~/.bashrc"
+alias reload=". ~/.bash_profile"
 alias ls="ls -1 --color=auto"
 alias la="ls -a"
 # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
