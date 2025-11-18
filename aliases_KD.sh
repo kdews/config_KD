@@ -5,7 +5,7 @@ alias reload=". ~/.bash_profile"
 alias ls="ls -1 --color=auto"
 alias la="ls -a"
 # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
-sq_fmt="%.10i %.9P %.25j %.2t %.10M %.10L %.6C %.6D %.6m %R"
+sq_fmt="%.17i %.9P %.20j %.2t %.10M %.10L %.6C %.6D %.6m %R"
 alias myjobs="squeue --me --format=\"$sq_fmt\""
 alias watchjobs="watch -d 'squeue --me --format=\"$sq_fmt\"'"
 unset -v sq_fmt

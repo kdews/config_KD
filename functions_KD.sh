@@ -3,51 +3,49 @@
 
 # Function returns path of file in which a given function name is defined
 whichfunc () (
-	# $1 is function name input or help option
-	if (( $# < 1  )) || (( $# > 2 )) || [[ $1 == "-h" ]] || \
-[[ $1 == "--help" ]]
-	then
-		echo \
+  # $1 is function name input or help option
+  if (( $# < 1  )) ||  (( $# > 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo \
 "Function returns path of file in which a given function name is defined
 
 Usage: whichfunc [-h / --help] <function name> 
 
 Options:
 -h, --help : Prints this help message"
-	else
-		shopt -s extdebug
-		declare -F "$1"
-	fi
+  else
+    shopt -s extdebug
+    declare -F "$1"
+  fi
 )
 
 
 # Function returns partition names with idle nodes
 whosopen () {
-	# $1 can be help option
-	if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]
-	then
-		echo \
+  # $1 can be help option
+  if [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo \
 "Function returns names of parititons with currently idle nodes.
 
 Usage: whosopen [-h / --help]
 
 Options:
 -h, --help : Prints this help message"
-	else
-		sinfo | grep "idle" | awk '{print $1}'
-	fi
+  else
+    sinfo | grep "idle" | awk '{print $1}'
+  fi
 }
 
 
 # Function to quickly push changes to GitHub from remote git repo
 gitpublish() {
-	# $1 is the commit message
-	# $2 (if given) is /path/to/repo
-	# Help message
-	if (( $# < 1  )) || (( $# > 2 )) || [[ $1 == "-h" ]] || \
-[[ $1 == "--help" ]]
-	then
-		echo \
+  # $1 is the commit message
+  # $2 (if given) is /path/to/repo
+  # Help message
+  if (( $# < 1  )) || (( $# > 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo \
 "$# options given to gitpublish: $*
 
 Function pushes repository to GitHub with commit message specified by 
@@ -55,284 +53,388 @@ Function pushes repository to GitHub with commit message specified by
 [/path/to/repo].
 
 Usage: gitpublish <commit_msg> [/path/to/repo]"
-	# Run in current directory (./)
-	elif (( $# == 1 ))
-	then
-		git add -v --all
-		git commit -m "$1"
-		git push -v
-	# Handle second positional argument
-	elif (( $# == 2 ))
-	then
-		git -C "$2" add -v --all
-		git -C "$2" commit -m "$1"
-		git -C "$2" push -v
-	fi
+  # Run in current directory (./)
+  elif (( $# == 1 ))
+  then
+    git add -v --all
+    git commit -m "$1"
+    git push -v
+  # Handle second positional argument
+  elif (( $# == 2 ))
+  then
+    git -C "$2" add -v --all
+    git -C "$2" commit -m "$1"
+    git -C "$2" push -v
+  fi
 }
 
 
 # Generate YYYY-MM-DD formatted date from 10 years prior to today
 olddate () {
-	date -d "10 years ago" +%F
+  date -d "10 years ago" +%F
 }
 
 
 # Function to get job info from Slurm "sacct" for a specific
 # job name and start date
 getjobinfo () {
-	# $1 is the job name
-	# $2 is the start date 
-	# Returns info for all jobs starting after <startdate> (format YYYY-MM-DD)
-	# Help message
-	local hlp="Function prints most informative outputs of Slurm 'sacct' for
+  # $1 is the job name
+  # $2 is the start date 
+  # Returns info for all jobs starting after <startdate> (format YYYY-MM-DD)
+  # Help message
+  local hlp
+  hlp="\
+Function prints most informative outputs of Slurm 'sacct' for
 given job name and start date.
 
 Usage: getjobinfo <job_name> <start_date>
 
 The format of <start_date> must be: YYYY-MM-DD."
-	# Format string
-	fmt="JobID%20,JobName,State,ExitCode,Start,End,Elapsed,CPUTime,ReqMem,MaxRSS,NCPUS"
-	if (( $# < 2 )) || [[ $1 == "-h" ]] || [[ $1 == "--help" ]]
-	then
-		echo "$hlp"
-	elif [[ -z $2 ]]
-	then
-		echo "Missing <start_date>."
-		echo "$hlp"
-	else
-		sacct --format="$fmt" --name "$1" -S "$2"
-	fi
+  # Format string
+  if (( $# < 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  elif [[ -z "$2" ]]
+  then
+    echo "Missing <start_date>."
+    echo "$hlp"
+  else
+    local job_name
+    local start_date
+    local fmt
+    job_name="$1"
+    start_date="$2"
+    fmt="JobID%20,JobName,State%13,ExitCode,Start,End,Elapsed,CPUTime,ReqMem,MaxRSS,NCPUS"
+    # Retrieve only completed (CD), out of memory (OOM), or timed out (TO) jobs
+    sacct --format="$fmt" \
+      --name "$job_name" \
+      -s "CD,TO,OOM" \
+      -S "$start_date" \
+      -E now
+  fi
 }
 
 # Function to get tab-separated list of job IDs from Slurm from given job name
 # Retrieves all IDs (start date arbitrarily set to 10 years ago)
 getjobids () {
-	# Help message
-	local hlp="Function to list all job IDs returned by Slurm 'sacct' for a
+  local start_date
+  local hlp
+  start_date="$(olddate)"
+  # Help message
+  hlp="\
+Function to list all job IDs returned by Slurm 'sacct' for a
 specific job name. Excludes job IDs ending in '.batch' or '.extern'.
 
-Usage: getjobids <job_name>
+Usage: getjobids <job_name> [date]
 
-Automatically starts at 10 years prior to today's date (e.g., $start_date)."
-	if (( $# < 1 )) || [[ $1 = "-h" ]] || [[ $1 = "--help" ]]
-	then
-		echo "$hlp"
-	else
-		# sacct -n -o jobid%50 --name "$1" -S "$(olddate)"
-		sacct --format "JobID%20,State%20" --name "$1" -S "$(olddate)" | \
-		# Retrieve only IDs for completed or out of memory jobs,
-		# excluding x.batch and x.extern job IDs
-		grep "COMPLETED" | grep -v "batch\|extern" | awk '{print $1}'
-		# # Substitute newlines with commas and trim trailing comma
-		# tr -s '\n' ',' | tr -d '[:space:]' | sed 's/\(.*\),/\1/'
-	fi
+Where date is formatted: YYYY_MM_DD
+Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
+  if (( $# < 1 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  else
+    local job_name
+    job_name="$1"
+    if (( $# == 2 ))
+    then
+      start_date="$2"
+    fi
+    # Retrieve only completed (CD), out of memory (OOM), or timed out (TO) jobs
+    # Exclude <jobid>.batch/extern/interactive
+    sacct --format "JobID%20,State%13" \
+      --name "$job_name" \
+      -s "CD,TO,OOM" \
+      -S "$start_date" \
+      -E "now" \
+      | grep -v "\." \
+      | grep -v "JobID\|-" \
+      | awk '{print $1}'
+    # # Substitute newlines with commas and trim trailing comma
+    # tr -s '\n' ',' | tr -d '[:space:]' | sed 's/\(.*\),/\1/'
+  fi
 }
 
 
-# Function to list the max memory usage (MaxRSS) for each job for 
-# a specific job name
+# Function to list the max memory usage for each job named <job_name>
 jobmem () {
-	# Help message
-	local hlp="Function to list the max memory usage (MaxRSS) for each job
-listed by Slurm 'sacct' for a specific job name, sorted from least to greatest.
+  local start_date
+  local hlp
+  start_date="$(olddate)"
+  # Help message
+  hlp="\
+Function to list max memory used by each job named <job_name> reported by
+USC CARC's 'jobinfo', sorted from least to greatest.
 
-Usage: jobmem <job_name>
+Usage: jobmem <job_name>  [date]
 
-Automatically starts at 10 years prior to today's date (e.g., $start_date)."
-	if (( $# < 1 )) || [[ $1 = "-h" ]] || [[ $1 = "--help" ]]
-	then
-		echo "$hlp"
-	else
-		local ids
-		mapfile -t ids < <(getjobids "$1")
-		for ((i=0;i<${#ids[@]};i++))
-		do
-			local id="${ids[i]}"
-			local mem
-			mem="$(jobinfo "$id" | grep "Max memory" | awk -F' : ' '{print $2}')"
-			# Remove '(estimate)' ending
-			mem="${mem%% *}"
-			# Remove whitespace
-			mem="$(echo "$mem" | tr -d ' ')"
-			printf "%s\t%s\n" "$mem" "$id"
-		done | sort -h
-	fi
+Where date is formatted: YYYY_MM_DD
+Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
+  if (( $# < 1 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  else
+    local job_name
+    local ids
+    job_name="$1"
+    if (( $# == 2 ))
+    then
+      start_date="$2"
+    fi
+    mapfile -t ids < <(getjobids "$job_name" "$start_date")
+    if [[ "${#ids[@]}" -ne 0 ]]
+    then
+      local ptn
+      ptn="Max memory used"
+      printf "%-10s %-10s\n" "JobID" "MaxMemoryUsed"
+      for (( i=0; i<${#ids[@]}; i++ ))
+      do
+        local id
+        local mem
+        id="${ids[i]}"
+        # Use capture group to get memory report (e.g., 1.89M)
+        mem="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9.A-Z]+)\s*.*/\1/g')"
+        printf "%-10s %-10s\n" "$id" "$mem"
+      done | sort -h -k2
+    fi
+  fi
 }
 
 
-# Function to list elapsed time in seconds for each job listed by 
-# Slurm 'sacct' for a specific job name
+# Function to list elapsed time in seconds for each job named <job_name>
 jobtime () {
-	local start_date
-	start_date="$(olddate)"
-	local hlp="Function to list elapsed times (Elapsed) for each job listed by
-Slurm 'sacct' for a specific job name, sorted from least to greatest.
+  local start_date
+  local hlp
+  start_date="$(olddate)"
+  hlp="\
+Function to list elapsed walltime for each job named <job_name> reported by
+USC CARC's 'jobinfo', sorted from least to greatest.
 
-Usage: jobtime <job_name>
+Usage: jobtime <job_name> [date]
 
-Automatically starts 10 years prior to today's date (e.g., $start_date)."
-	if (( $# < 1 )) || [[ $1 = "-h" ]] || [[ $1 = "--help" ]]
-	then
-		echo "$hlp"
-	else
-		local ids
-		mapfile -t ids < <(getjobids "$1")
-		for ((i=0;i<${#ids[@]};i++))
-		do
-			local id="${ids[i]}"
-			local t
-			t="$(jobinfo "$id" | grep "Used walltime" | awk -F' : ' '{print $2}')"
-			# Remove whitespace
-			t="$(echo "$t" | tr -d ' ')"
-			printf "%s\t%s\n" "$t" "$id"
-		done | sort -h
-	fi
+Where date is formatted: YYYY_MM_DD
+Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
+  if (( $# < 1 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  else
+    local job_name
+    local ids
+    job_name="$1"
+    if (( $# == 2 ))
+    then
+      start_date="$2"
+    fi
+    mapfile -t ids < <(getjobids "$job_name" "$start_date")
+    if [[ "${#ids[@]}" -ne 0 ]]
+    then
+      local ptn
+      ptn="Elapsed walltime"
+      printf "%-10s %-10s\n" "JobID" "ElapsedWalltime"
+      for (( i=0; i<${#ids[@]}; i++))
+      do
+        local id
+        local t
+        id="${ids[i]}"
+        # Use capture group to get time report (e.g., 00:00:30)
+        t="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9:]+)\s*/\1/g')"
+        printf "%-10s %-10s\n" "$id" "$t"
+      done | sort -k2
+    fi
+  fi
 }
 
 # Function to list the max memory usage (MaxRSS) for each job for 
 # a specific job name (can also calculate maximum)
 jobmem2 () {
-	local start_date="$(olddate)"
-	# Help message
-	local hlp="Function to list or find the maximum of the max memory usage (MaxRSS) for 
+  local start_date
+  local hlp
+  start_date="$(olddate)"
+  # Help message
+  hlp="\
+Function to list or find the maximum of the max memory usage (MaxRSS) for 
 each job listed by Slurm 'sacct' for a specific job name over the last 10 years.
 
-Usage: jobmem2 <option> <job_name>
+Usage: jobmem2 <option> <job_name> [date]
+
+Where date is formatted: YYYY_MM_DD
 Options:
-  -m	return only the highest MaxRSS value for jobs with <job_name>
-  -l	list MaxRSS values for jobs with <job_name> in human-readable
-		format (e.g., KB/MB/GB)
+  -m  return only the highest MaxRSS value for jobs with <job_name>
+  -l  list MaxRSS values for jobs with <job_name> in human-readable
+    format (e.g., KB/MB/GB)
 
-Automatically starts at 10 years prior to today's date (e.g., $start_date)."
-	if (( $# < 2 )) || [[ $1 = "-h" ]] || [[ $1 = "--help" ]]
-	then
-		echo "$hlp"
-	elif [[ $1 = "-m" ]] || [[ $1 = "-l" ]]
-	then
-		local jobres=$(getjobinfo "$2" "$start_date" | grep "batch" | grep "COMPLETED\|OUT_OF_ME")
-		local jobids=$(echo "$jobres" | awk '{print $1}')
-		local rss=$(echo "$jobres" | awk '{print $9}')
-		local jobids=(${jobids// / })
-		local rss=(${rss// / })
-		local cnt="${#jobids[@]}"
-		local max_m=0
-		for ((i=0;i<cnt;i++))
-		do
-			local j=${jobids[i]}
-			# Remove unit and decimals
-			local m="$(echo "${rss[i]}" | sed 's/[A-Z.].*//g')"
-			# Save unit
-			local m_unit=$(echo ${rss[i]} | sed 's/[[:digit:].]*//g')
-			if [[ $1 = "-m" ]]
-			then
-				[[ $m_unit = "M" ]] && local m=$(( m / 1000 ))
-				if (( m > max_m ))
-				then
-					local max_j=$j
-					local max_m=$m
-					local max_m_unit=$m_unit
-				fi
-			fi
-			if [[ $max_m ]] && (( max_m != 0 )) && [[ $max_m_unit ]]
-			then
-				local m=$max_m
-				local m_unit=$max_m_unit
-			fi
-			# Handles input in kilobytes (KB)
-			if [[ $m_unit = "K" ]]
-			then
-				if (( $(echo -n "$m" | wc -c) < 4 ))
-				then
-					local mem="${m}KB"
-				elif (( $(echo -n "$m" | wc -c) < 7 ))
-				then
-					local mem="$((m / 1000))MB"
-				else
-					local mem="$((m / 1000000))GB"
-				fi
-			# Handles input in megabytes (MB)
-			elif [[ $m_unit = "M" ]]
-			then
-				if (( $(echo -n "$m" | wc -c) < 3 ))
-				then
-					local mem="${m}MB"
-				else
-					local mem="$((m / 1000))GB"
-				fi
-			else
-				# Error message
-				local err="Error - unrecognized unit of memory in ${m}: ${m_unit}.
+Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
+  if (( $# < 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  elif [[ "$1" = "-m" ]] || [[ "$1" = "-l" ]]
+  then
+    local job_name
+    local jobs
+    local cnt
+    local max_m
+    job_name="$2"
+    if (( $# == 3 ))
+    then
+      start_date="$3"
+    fi
+    # Array of info for all jobs named <job_name>
+    mapfile -t jobs < \
+      <(getjobinfo "$job_name" "$start_date" | grep "batch")
+    cnt="${#jobs[@]}"
+    max_m=0
+    for ((i=0;i<cnt;i++))
+    do
+      local j
+      local rss
+      local m
+      local m_unit
+      j="$(echo "${jobs[i]}" | awk '{print $1}')"
+      rss="$(echo "${jobs[i]}" | awk '{print $9}')"
+      # Remove unit and decimal numbers (if needed)
+      m="${rss//[A-Z]/}"
+      m="${m/.*/}"
+      # Save unit
+      m_unit="${rss//[0-9.]/}"
+      if [[ "$1" = "-m" ]]
+      then
+        [[ $m_unit = "M" ]] && m=$(( m / 1000 ))
+        if (( m > max_m ))
+        then
+          local max_j
+          local max_m
+          local max_m_unit
+          max_j="$j"
+          max_m="$m"
+          max_m_unit="$m_unit"
+        fi
+      fi
+      if [[ "$max_m" ]] && (( max_m != 0 )) && [[ "$max_m_unit" ]]
+      then
+        m="$max_m"
+        m_unit="$max_m_unit"
+      fi
+      # Handles input in kilobytes (KB)
+      local mem
+      if [[ "$m_unit" = "K" ]]
+      then
+        if (( "$(echo -n "$m" | wc -c)" < 4 ))
+        then
+          mem="${m}KB"
+        elif (( "$(echo -n "$m" | wc -c)" < 7 ))
+        then
+          mem="$(( m / 1000 ))MB"
+        else
+          mem="$(( m / 1000000 ))GB"
+        fi
+      # Handles input in megabytes (MB)
+      elif [[ "$m_unit" = "M" ]]
+      then
+        if (( "$(echo -n "$m" | wc -c)" <= 3 ))
+        then
+          mem="${m}MB"
+        else
+          mem="$(( m / 1000 ))GB"
+        fi
+      # Handles input in gigabytes (GB)
+      elif [[ "$m_unit" = "G" ]]
+      then
+        mem="${m}GB"
+      else
+        local err
+        # Error message
+        err="\
+Error - unrecognized unit of memory in $rss: $m_unit (jobid: $j)
 
-Check output of 'MaxRSS' column from command 'getjobinfo $2 $start_date'.
+Check output of 'MaxRSS' column from command 'getjobinfo $job_name $start_date'.
 This function only handes K and M unit inputs."
-				echo "$err"
-				break
-			fi
-			if [[ $1 = "-l" ]]
-			then
-				printf "%s\t%s\n" "${j}" "${mem}"
-			fi
-		done
-		if [[ $1 = "-m" ]]
-		then
-			printf "%s\t%s\n" "${max_j}" "${mem}"
-		fi
-	else
-		echo "Error, unrecognized option: ${1}. Run jobmem -h/--help for help."
-	fi
+        echo "$err"
+        break
+      fi
+      if [[ "$1" = "-l" ]]
+      then
+        printf "%s\t%s\n" "${j/.*/}" "$mem"
+      fi
+    done
+    if [[ "$1" = "-m" ]]
+    then
+      printf "%s\t%s\n" "${max_j/.*/}" "$mem"
+    fi
+  else
+    echo "Error, unrecognized option: $1"
+    echo "Run jobmem2 -h/--help for help."
+  fi
 }
 
 
 # Function to list elapsed time in seconds for each job listed by 
 # Slurm 'sacct' for a specific job name
 jobtime2 () {
-	local start_date="$(olddate)"
-	local hlp="Function to list or find the maximum of elapsed times (Elapsed) for each
+  local start_date
+  local hlp
+  start_date="$(olddate)"
+  hlp="\
+Function to list or find the maximum of elapsed times (Elapsed) for each
 job listed by Slurm 'sacct' for a specific job name over the last 10 years.
 
-Usage: jobtime2 [option] <job_name>
+Usage: jobtime2 [option] <job_name> [date]
+
+Where date is formatted: YYYY_MM_DD
 Options:
   -m    return only greatest Elapsed time for jobs with <job_name>
   -l    list all Elapsed time values for jobs with <job_name>
 
-Automatically starts 10 years prior to today's date (e.g., $start_date)."
-	if (( $# < 2 )) || [[ $1 = "-h" ]] || [[ $1 = "--help" ]]
-	then
-		echo "$hlp"
-	elif [[ $1 = "-m" ]] || [[ $1 = "-l" ]]
-	then
-		# Take  JobID and Elapsed columns from ony completed batch jobs
-		local jobres=$(getjobinfo $2 $start_date | grep "batch" | grep "COMPLETED\|OUT_OF_ME")
-		local jobids=$(echo "$jobres" | awk '{print $1}')
-		local elapsed=$(echo "$jobres" | awk '{print $7}')
-		local jobids=(${jobids// / })
-		local elapsed=(${elapsed// / })
-		local cnt="${#jobids[@]}"
-		local max_t=0
-		for ((i=0;i<cnt;i++))
-		do
-			local j=${jobids[i]}
-			local t=$(echo "${elapsed[i]}" | awk -F: '{print ($1 * 3600) + ($2 * 60) + $3}')
-			if [[ $1 = "-l" ]]
-			then
-				((t >= 3600)) && local read_t="($((t/3600)) hours)"
-				((t < 3600)) && local read_t="($((t/60)) minutes)"
-				((t < 60)) && unset -v read_t
-				echo "$j	$t seconds $read_t"
-			elif [[ $1 = "-m" ]]
-			then
-				(( t > max_t )) && { max_j=$j; max_t=$t; }
-			fi
-		done
-		if [[ $1 = "-m" ]]
-		then
-			((max_t >= 3600)) && local max_read_t="($((max_t/3600)) hours)"
-			((max_t < 3600)) && local max_read_t="($((max_t/60)) minutes)"
-			((max_t < 60)) && unset -v max_read_t
-			echo "$max_j	$max_t seconds $max_read_t"
-		fi
-	else
-		echo "Error, unrecognized option: ${1}. Run jobtime -h/--help for help."
-	fi
+Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
+  if (( $# < 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
+  then
+    echo "$hlp"
+  elif [[ "$1" = "-m" ]] || [[ "$1" = "-l" ]]
+  then
+    local job_name
+    local jobs
+    local cnt
+    local max_t
+    job_name="$2"
+    if (( $# == 3 ))
+    then
+      start_date="$3"
+    fi
+    # Array of info for all jobs named <job_name>
+    mapfile -t jobs < \
+      <(getjobinfo "$job_name" "$start_date" | grep "batch")
+    cnt="${#jobs[@]}"
+    max_t=0
+    for (( i=0; i<cnt; i++ ))
+    do
+      local j
+      local elapsed
+      local t
+      # Take JobID and Elapsed columns
+      j="$(echo "${jobs[i]}" | awk '{print $1}')"
+      elapsed="$(echo "${jobs[i]}" | awk '{print $7}')"
+      t="$(echo "$elapsed" | awk -F: '{print ($1 * 3600) + ($2 * 60) + $3}')"
+      if [[ "$1" = "-l" ]]
+      then
+        local read_t
+        (( t >= 3600 )) && read_t="($(( t / 3600 )) hours)"
+        (( t < 3600 )) && read_t="($(( t / 60 )) minutes)"
+        (( t < 60 )) && unset -v read_t
+        printf "%s\t%s\n" "${j/.*/}" "$t seconds $read_t"
+      elif [[ "$1" = "-m" ]]
+      then
+        (( t > max_t )) && { max_j="$j"; max_t="$t"; }
+      fi
+    done
+    if [[ "$1" = "-m" ]]
+    then
+      local max_read_t
+      (( max_t >= 3600 )) && max_read_t="($((max_t / 3600)) hours)"
+      (( max_t < 3600 )) &&  max_read_t="($((max_t / 60)) minutes)"
+      (( max_t < 60 )) && unset -v max_read_t
+      printf "%s\t%s\n" "${max_j/.*/}" "$max_t seconds $max_read_t"
+    fi
+  else
+    echo "Error, unrecognized option: $1"
+    echo "Run jobtime2 -h/--help for help."
+  fi
 }
 
