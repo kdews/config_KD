@@ -39,7 +39,7 @@ Options:
 
 
 # Function to quickly push changes to GitHub from remote git repo
-gitpublish() {
+gitpublish () {
   # $1 is the commit message
   # $2 (if given) is /path/to/repo
   # Help message
@@ -66,6 +66,24 @@ Usage: gitpublish <commit_msg> [/path/to/repo]"
     git -C "$2" commit -m "$1"
     git -C "$2" push -v
   fi
+}
+
+
+# Print job scheduler queue in specific format
+myjobs () {
+  local sq_fmt
+  # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
+  sq_fmt="%.17i %.9P %.20j %.2t %.10M %.10L %.6C %.6D %.6m %R"
+  squeue --me --format="$sq_fmt"
+}
+
+
+# Use 'watch' to follow job scheduler queue in real time
+watchjobs () {
+  local sq_fmt
+  # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
+  sq_fmt="%.17i %.9P %.20j %.2t %.10M %.10L %.6C %.6D %.6m %R"
+  watch -d "squeue --me --format='$sq_fmt' -t running"
 }
 
 
