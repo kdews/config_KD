@@ -73,7 +73,7 @@ Usage: gitpublish <commit_msg> [/path/to/repo]"
 myjobs () {
   local sq_fmt
   # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
-  sq_fmt="%.17i %.9P %.20j %.2t %.10M %.10L %.6C %.6D %.6m %R"
+  sq_fmt="%.17i %.5K %.9P %.17j %.2t %.10M %.10L %.6C %.6D %.6m %R"
   squeue --me --format="$sq_fmt"
 }
 
