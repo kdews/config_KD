@@ -203,7 +203,7 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
     then
       local ptn
       ptn="Max memory used"
-      printf "%-10s %-10s\n" "JobID" "MaxMemoryUsed"
+      printf "%-10s\t%-10s\n" "JobID" "MaxMemoryUsed"
       for (( i=0; i<${#ids[@]}; i++ ))
       do
         local id
@@ -211,8 +211,8 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
         id="${ids[i]}"
         # Use capture group to get memory report (e.g., 1.89M)
         mem="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9.A-Z]+)\s*.*/\1/g')"
-        printf "%-10s %-10s\n" "$id" "$mem"
-      done | sort -h -k2
+        printf "%-10s\t%-10s\n" "$id" "$mem"
+      done | sort -h -k2b
     fi
   fi
 }
@@ -247,7 +247,7 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
     then
       local ptn
       ptn="Elapsed walltime"
-      printf "%-10s %-10s\n" "JobID" "ElapsedWalltime"
+      printf "%-10s\t%-10s\n" "JobID" "ElapsedWalltime"
       for (( i=0; i<${#ids[@]}; i++))
       do
         local id
@@ -255,8 +255,8 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
         id="${ids[i]}"
         # Use capture group to get time report (e.g., 00:00:30)
         t="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9:]+)\s*/\1/g')"
-        printf "%-10s %-10s\n" "$id" "$t"
-      done | sort -k2
+        printf "%-10s\t%-10s\n" "$id" "$t"
+      done | sort -k2b
     fi
   fi
 }
