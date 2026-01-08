@@ -212,7 +212,8 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
         # Use capture group to get memory report (e.g., 1.89M)
         mem="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9.A-Z]+)\s*.*/\1/g')"
         printf "%-10s\t%-10s\n" "$id" "$mem"
-      done | sort -h -k2b
+      # done | sort -k2,2bh
+      done | sort -h -t $'\t' -k2,2
     fi
   fi
 }
@@ -256,7 +257,7 @@ Unless date is given, starts 10 years prior to today's date (e.g., $start_date).
         # Use capture group to get time report (e.g., 00:00:30)
         t="$(jobinfo "$id" | grep "$ptn" | sed -E 's/.+\s+([0-9:]+)\s*/\1/g')"
         printf "%-10s\t%-10s\n" "$id" "$t"
-      done | sort -k2b
+      done | sort -t $'\t' -k2,2
     fi
   fi
 }
