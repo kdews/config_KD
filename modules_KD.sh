@@ -13,4 +13,4 @@ module --latest load git >/dev/null 2>&1
 # module load r >/dev/null 2>&1
 # # Load most recent screen version
 # export HOSTNAME=$(hostname) # patch for screen module
-# module --latest load screen >/dev/null 2>&1
+module --latest load screen >/dev/null 2>&1
