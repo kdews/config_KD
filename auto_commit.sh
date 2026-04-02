@@ -5,13 +5,13 @@ date
 
 # Source shortcut git function
 source_file () {
-    if [[ -a $1 ]]
-    then
-        source "$1"
-    else
-        echo "Error on source of $1"
-        exit 1
-    fi
+  if [[ -f $1 ]]
+  then
+    source "$1"
+  else
+    echo "Error on source of $1"
+    exit 1
+  fi
 }
 config_dir="$HOME/config_KD"
 MODS="$config_dir/modules_KD.sh"
@@ -33,7 +33,7 @@ mapfile -t REPOS < <(grep -l "$GIT_USR" ~/scripts/*/.git/config)
 REPOS+=("$config_dir")
 for REPO_PATH in "${REPOS[@]}"
 do
-    REPO_PATH="${REPO_PATH%%\.git*}"
-    echo "$REPO_PATH"
-    gitpublish "$MESSAGE" "$REPO_PATH"
+  REPO_PATH="${REPO_PATH%%\.git*}"
+  echo "$REPO_PATH"
+  gitpublish "$MESSAGE" "$REPO_PATH"
 done

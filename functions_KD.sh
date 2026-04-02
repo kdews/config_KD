@@ -1,44 +1,96 @@
 #!/bin/bash
 # User-specific functions
 
-# Function returns path of file in which a given function name is defined
-whichfunc () (
-  # $1 is function name input or help option
-  if (( $# < 1  )) ||  (( $# > 2 )) || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
-  then
+# Returns table of free computing node resources sorted by memory, then CPUs
+availnodes () {
+  # Help flag
+  show_help() {
     echo \
-"Function returns path of file in which a given function name is defined
+"Returns table of free computing node resources sorted by memory, then CPUs by
+parsing output of USC CARC 'noderes' command. Optionally takes partition name
+as first positional argument.
 
-Usage: whichfunc [-h / --help] <function name> 
+Usage: $0 [-h / --help] [partition]
 
 Options:
 -h, --help : Prints this help message"
+  }
+  if [[ "$1" == "-h" || "$1" == "--help" ]]
+  then
+    show_help
+  else
+    # Base command is noderes showing only free resources
+    cmd=(noderes -f)
+    # $1 = partition
+    if [[ "$#" -eq 1 ]]
+    then
+      partition="$1"
+      if scontrol show partition "$partition" &>/dev/null
+      then
+        cmd+=(-p "$1")
+      else
+        echo "Invalid partition: $partition"
+        return 1
+      fi
+    fi
+    # Print header without sorting
+    noderes 2>/dev/null | head -n4
+    # Sorts table by CPUs, then Memory
+    "${cmd[@]}" | tail -n +5 | sort -b -k 7h -k 6n
+  fi
+}
+
+
+# Returns path of file in which a given function name is defined
+whichfunc () {
+  # Help flag
+  show_help() {
+    echo \
+"Returns path of file in which a given function name is defined.
+
+Usage: $0 [-h / --help] <function_name> 
+
+Options:
+-h, --help : Prints this help message"
+  }
+  if [[ "$1" == "-h" || "$1" == "--help" ]]
+  then
+    show_help
+    return 0
+  elif [[ "$#" -ne 1 ]] # $1 = function_name
+  then
+    echo "Invalid arguments."
+    show_help
+    return 1
   else
     shopt -s extdebug
     declare -F "$1"
   fi
-)
+}
 
 
-# Function returns partition names with idle nodes
+# Returns partition names with idle nodes
 whosopen () {
-  # $1 can be help option
-  if [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]
-  then
+  # Help flag
+  show_help () {
     echo \
-"Function returns names of parititons with currently idle nodes.
+"Returns names of parititons with currently idle nodes.
 
-Usage: whosopen [-h / --help]
+Usage: $0 [-h / --help]
 
 Options:
 -h, --help : Prints this help message"
+  }
+  if [[ "$1" == "-h" || "$1" == "--help" ]]
+  then
+    show_help
   else
     sinfo | grep "idle" | awk '{print $1}'
   fi
 }
 
 
-# Function to quickly push changes to GitHub from remote git repo
+# Single line function to push changes to GitHub from remote git repo
 gitpublish () {
   # $1 is the commit message
   # $2 (if given) is /path/to/repo
@@ -52,7 +104,7 @@ Function pushes repository to GitHub with commit message specified by
 <commit_msg>. If target repository is not the current directory, specify 
 [/path/to/repo].
 
-Usage: gitpublish <commit_msg> [/path/to/repo]"
+Usage: $0 <commit_msg> [/path/to/repo]"
   # Run in current directory (./)
   elif (( $# == 1 ))
   then
@@ -105,7 +157,7 @@ getjobinfo () {
 Function prints most informative outputs of Slurm 'sacct' for
 given job name and start date.
 
-Usage: getjobinfo <job_name> <start_date>
+Usage: $0 <job_name> <start_date>
 
 The format of <start_date> must be: YYYY-MM-DD."
   # Format string
@@ -132,6 +184,7 @@ The format of <start_date> must be: YYYY-MM-DD."
   fi
 }
 
+
 # Function to get tab-separated list of job IDs from Slurm from given job name
 # Retrieves all IDs (start date arbitrarily set to 10 years ago)
 getjobids () {
@@ -143,7 +196,7 @@ getjobids () {
 Function to list all job IDs returned by Slurm 'sacct' for a
 specific job name. Excludes job IDs ending in '.batch' or '.extern'.
 
-Usage: getjobids <job_name> [date]
+Usage: $0 <job_name> [date]
 
 Where date is formatted: YYYY_MM_DD
 Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
@@ -183,7 +236,7 @@ jobmem () {
 Function to list max memory used by each job named <job_name> reported by
 USC CARC's 'jobinfo', sorted from least to greatest.
 
-Usage: jobmem <job_name>  [date]
+Usage: $0 <job_name>  [date]
 
 Where date is formatted: YYYY_MM_DD
 Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
@@ -228,7 +281,7 @@ jobtime () {
 Function to list elapsed walltime for each job named <job_name> reported by
 USC CARC's 'jobinfo', sorted from least to greatest.
 
-Usage: jobtime <job_name> [date]
+Usage: $0 <job_name> [date]
 
 Where date is formatted: YYYY_MM_DD
 Unless date is given, starts 10 years prior to today's date (e.g., $start_date)."
@@ -273,7 +326,7 @@ jobmem2 () {
 Function to list or find the maximum of the max memory usage (MaxRSS) for 
 each job listed by Slurm 'sacct' for a specific job name over the last 10 years.
 
-Usage: jobmem2 <option> <job_name> [date]
+Usage: $0 <option> <job_name> [date]
 
 Where date is formatted: YYYY_MM_DD
 Options:
@@ -395,7 +448,7 @@ jobtime2 () {
 Function to list or find the maximum of elapsed times (Elapsed) for each
 job listed by Slurm 'sacct' for a specific job name over the last 10 years.
 
-Usage: jobtime2 [option] <job_name> [date]
+Usage: $0 [option] <job_name> [date]
 
 Where date is formatted: YYYY_MM_DD
 Options:
