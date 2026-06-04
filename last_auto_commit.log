@@ -1,0 +1,136 @@
+Wed Jun  3 23:23:01 PDT 2026
+/home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
+/home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
+/home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
+git version 2.43.5
+User: kdews
+Auto-commit: Wed Jun  3 23:23:01 PDT 2026
+/home1/kdeweese/scripts/compare-s-lat-vcfs/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/compare-s-lat-vcfs.git
+To github.com:kdews/compare-s-lat-vcfs.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/m-pyrifera-plastid-assembly/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/m-pyrifera-plastid-assembly.git
+To github.com:kdews/m-pyrifera-plastid-assembly.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/m-pyrifera-sporeless/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/m-pyrifera-sporeless.git
+To github.com:kdews/m-pyrifera-sporeless.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/oyster_fanzor/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/oyster_fanzor.git
+To github.com:kdews/oyster_fanzor.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-de/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-de.git
+To github.com:kdews/s-latissima-de.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-genome/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-genome.git
+To github.com:kdews/s-latissima-genome.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-mutation-annotation/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-mutation-annotation.git
+To github.com:kdews/s-latissima-mutation-annotation.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-organelles/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-organelles.git
+To github.com:kdews/s-latissima-organelles.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-polygenic-modeling/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-polygenic-modeling.git
+To github.com:kdews/s-latissima-polygenic-modeling.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-popgen/
+add 'count_bases.R'
+[main cf09bbf] Auto-commit: Wed Jun  3 23:23:01 PDT 2026
+ 1 file changed, 17 insertions(+), 42 deletions(-)
+Pushing to github.com:kdews/s-latissima-popgen.git
+To github.com:kdews/s-latissima-popgen.git
+   6437fd2..cf09bbf  main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+/home1/kdeweese/scripts/s-latissima-transcriptome-assembly/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/s-latissima-transcriptome-assembly.git
+To github.com:kdews/s-latissima-transcriptome-assembly.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/saccharina-speciation/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/saccharina-speciation.git
+To github.com:kdews/saccharina-speciation.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/scripts/testwitjo/
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+Pushing to github.com:kdews/testwitjo.git
+To github.com:kdews/testwitjo.git
+ = [up to date]      main -> main
+updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
+/home1/kdeweese/config_KD

@@ -131,6 +131,15 @@ myjobs () {
 
 
 # Use 'watch' to follow job scheduler queue in real time
+watchalljobs () {
+  local sq_fmt
+  # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
+  sq_fmt="%.17i %.9P %.20j %.2t %.10M %.10L %.6C %.6D %.6m %R"
+  watch -d "squeue --me --format='$sq_fmt'"
+}
+
+
+# Use 'watch' to follow job scheduler queue in real time (running jobs only)
 watchjobs () {
   local sq_fmt
   # JOBID PARTITION NAME STATE TIME TIME_LEFT CPUS NODES MIN_MEM NODELIST(REASON)
