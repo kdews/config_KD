@@ -1,10 +1,10 @@
-Thu Jun  4 23:23:01 PDT 2026
+Fri Jun  5 23:23:01 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.5
 User: kdews
-Auto-commit: Thu Jun  4 23:23:01 PDT 2026
+Auto-commit: Fri Jun  5 23:23:01 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -96,15 +96,19 @@ To github.com:kdews/s-latissima-polygenic-modeling.git
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-popgen/
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
+add 'count_bases.R'
+remove 'count_bases.sh'
+add 'base_counts.png'
+add 'count_bases.sbatch'
+[main f62da77] Auto-commit: Fri Jun  5 23:23:01 PDT 2026
+ 4 files changed, 179 insertions(+), 33 deletions(-)
+ create mode 100644 base_counts.png
+ create mode 100644 count_bases.sbatch
+ delete mode 100644 count_bases.sh
 Pushing to github.com:kdews/s-latissima-popgen.git
 To github.com:kdews/s-latissima-popgen.git
- = [up to date]      main -> main
+   cf09bbf..f62da77  main -> main
 updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-transcriptome-assembly/
 On branch main
 Your branch is up to date with 'origin/main'.
