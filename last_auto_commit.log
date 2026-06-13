@@ -1,18 +1,17 @@
-Thu Jun 11 23:23:01 PDT 2026
+Fri Jun 12 23:23:01 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.5
 User: kdews
-Auto-commit: Thu Jun 11 23:23:01 PDT 2026
+Auto-commit: Fri Jun 12 23:23:01 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 add 'copy_vcfs.sbatch'
-add 'fix_missing.sbatch'
-[main d00e4fb] Auto-commit: Thu Jun 11 23:23:01 PDT 2026
- 2 files changed, 12 insertions(+), 2 deletions(-)
+[main 3737e8f] Auto-commit: Fri Jun 12 23:23:01 PDT 2026
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 Pushing to github.com:kdews/compare-s-lat-vcfs.git
 To github.com:kdews/compare-s-lat-vcfs.git
-   66d5b60..d00e4fb  main -> main
+   d00e4fb..3737e8f  main -> main
 updating local tracking ref 'refs/remotes/origin/main'
 /home1/kdeweese/scripts/m-pyrifera-plastid-assembly/
 On branch main
@@ -65,16 +64,18 @@ To github.com:kdews/s-latissima-genome.git
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-mutation-annotation/
-add 'README.md'
 add 'ann_SnpEff.sh'
 add 'build_SnpEff_db.sh'
 add 'copy_data.sbatch'
+add 'fix_missing.sbatch'
+add 'install_SnpEff.sh'
 add 'mut_annot.config'
-[main 819475c] Auto-commit: Thu Jun 11 23:23:01 PDT 2026
- 5 files changed, 90 insertions(+), 308 deletions(-)
+add 'mut_annot_pipeline.sh'
+[main 54b367d] Auto-commit: Fri Jun 12 23:23:01 PDT 2026
+ 7 files changed, 283 insertions(+), 299 deletions(-)
 Pushing to github.com:kdews/s-latissima-mutation-annotation.git
 To github.com:kdews/s-latissima-mutation-annotation.git
-   2497cd7..819475c  main -> main
+   819475c..54b367d  main -> main
 updating local tracking ref 'refs/remotes/origin/main'
 /home1/kdeweese/scripts/s-latissima-organelles/
 On branch main
