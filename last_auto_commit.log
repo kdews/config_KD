@@ -1,10 +1,10 @@
-Sat Jun 13 23:23:01 PDT 2026
+Sun Jun 14 23:23:02 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.5
 User: kdews
-Auto-commit: Sat Jun 13 23:23:01 PDT 2026
+Auto-commit: Sun Jun 14 23:23:02 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -66,15 +66,14 @@ To github.com:kdews/s-latissima-genome.git
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-mutation-annotation/
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
+add 'copy_data.sbatch'
+add 'mut_annot.config'
+[main 7ba22dc] Auto-commit: Sun Jun 14 23:23:02 PDT 2026
+ 2 files changed, 19 insertions(+), 1 deletion(-)
 Pushing to github.com:kdews/s-latissima-mutation-annotation.git
 To github.com:kdews/s-latissima-mutation-annotation.git
- = [up to date]      main -> main
+   54b367d..7ba22dc  main -> main
 updating local tracking ref 'refs/remotes/origin/main'
-Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-organelles/
 On branch main
 Your branch is up to date with 'origin/main'.
