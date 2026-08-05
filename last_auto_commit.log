@@ -1,10 +1,10 @@
-Mon Aug  3 23:23:02 PDT 2026
+Tue Aug  4 23:23:02 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.7
 User: kdews
-Auto-commit: Mon Aug  3 23:23:02 PDT 2026
+Auto-commit: Tue Aug  4 23:23:02 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -55,6 +55,25 @@ To github.com:kdews/s-latissima-de.git
  = [up to date]      main -> main
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
+/home1/kdeweese/scripts/s-latissima-genome-v2/
+add 'busco_compare.R'
+add 'busco_compare.sbatch'
+add 'genomes_metadata.tsv'
+add 'make_guide_tree.R'
+add 'make_guide_tree.sbatch'
+add 'ntSynt_viz.R'
+add 'ntSynt_viz.sbatch'
+remove 'prune_tree.R'
+add 'quast.R'
+add 'scaffold_eval.R'
+add 'archive/prune_tree.R'
+[main f4b65aa] Auto-commit: Tue Aug  4 23:23:02 PDT 2026
+ 10 files changed, 337 insertions(+), 279 deletions(-)
+ rename prune_tree.R => archive/prune_tree.R (100%)
+Pushing to github.com:kdews/s-latissima-genome-v2.git
+To github.com:kdews/s-latissima-genome-v2.git
+   6f43816..f4b65aa  main -> main
+updating local tracking ref 'refs/remotes/origin/main'
 /home1/kdeweese/scripts/s-latissima-genome/
 On branch main
 Your branch is up to date with 'origin/main'.
