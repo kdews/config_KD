@@ -1,10 +1,10 @@
-Wed Aug  5 23:23:01 PDT 2026
+Thu Aug  6 23:23:01 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.7
 User: kdews
-Auto-commit: Wed Aug  5 23:23:01 PDT 2026
+Auto-commit: Thu Aug  6 23:23:01 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -56,27 +56,15 @@ To github.com:kdews/s-latissima-de.git
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-genome-v2/
-add 'cactus_pangenome.sbatch'
-add 'filter_assemblies.sbatch'
-add 'genome_analysis_pipeline.sh'
-add 'get_data.sbatch'
-add 'hal_extract.sbatch'
-add 'hal_visualize.sbatch'
-add 'lineage_download.sbatch'
-add 'make_guide_tree.sbatch'
-add 'ntSynt_viz.sbatch'
-add 'odgi_viz.sbatch'
-add 'pangenome_plots.sbatch'
-add 'prog_cactus.sbatch'
-add 'scaffold_eval.R'
-add 'sdr_blast.sbatch'
-add 'seq_divergence.sbatch'
-[main b1f8e00] Auto-commit: Wed Aug  5 23:23:01 PDT 2026
- 15 files changed, 332 insertions(+), 199 deletions(-)
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
 Pushing to github.com:kdews/s-latissima-genome-v2.git
 To github.com:kdews/s-latissima-genome-v2.git
-   38a3edb..b1f8e00  main -> main
+ = [up to date]      main -> main
 updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-genome/
 On branch main
 Your branch is up to date with 'origin/main'.
