@@ -1,10 +1,10 @@
-Mon Aug 10 23:23:01 PDT 2026
+Tue Aug 11 23:23:01 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.7
 User: kdews
-Auto-commit: Mon Aug 10 23:23:01 PDT 2026
+Auto-commit: Tue Aug 11 23:23:01 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -58,11 +58,11 @@ Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-genome-v2/
 add 'eval_genomes.sh'
 add 'quast.sbatch'
-[main 1f08935] Auto-commit: Mon Aug 10 23:23:01 PDT 2026
- 2 files changed, 242 insertions(+), 220 deletions(-)
+[main d36ccfe] Auto-commit: Tue Aug 11 23:23:01 PDT 2026
+ 2 files changed, 13 insertions(+), 6 deletions(-)
 Pushing to github.com:kdews/s-latissima-genome-v2.git
 To github.com:kdews/s-latissima-genome-v2.git
-   b320669..1f08935  main -> main
+   1f08935..d36ccfe  main -> main
 updating local tracking ref 'refs/remotes/origin/main'
 /home1/kdeweese/scripts/s-latissima-genome/
 On branch main
