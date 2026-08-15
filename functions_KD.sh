@@ -6,9 +6,10 @@ availnodes () {
   # Help flag
   show_help() {
     echo \
-"Returns table of free computing node resources sorted by memory, then CPUs by
-parsing output of USC CARC 'noderes' command. Optionally takes partition name
-as first positional argument.
+"Returns table of free (state = idle or mixed) computing node resources sorted
+by memory, then CPUs by parsing output of USC CARC 'noderes' command. Optionally
+takes valid partition name as first positional argument and returns only
+information about nodes in given partition.
 
 Usage: $0 [-h / --help] [partition]
 
@@ -20,7 +21,7 @@ Options:
     show_help
   else
     # Base command is noderes showing only free resources
-    cmd=(noderes -f)
+    cmd=(noderes -s "idle,mixed")
     # $1 = partition
     if [[ "$#" -eq 1 ]]
     then
@@ -36,7 +37,7 @@ Options:
     # Print header without sorting
     noderes 2>/dev/null | head -n4
     # Sorts table by CPUs, then Memory
-    "${cmd[@]}" | tail -n +5 | sort -b -k 7h -k 6n
+    "${cmd[@]}" | grep -vP "plnd|resv" | tail -n +5 | sort -b -k 7h -k 6n
   fi
 }
 
