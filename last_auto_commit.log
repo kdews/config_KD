@@ -1,10 +1,10 @@
-Fri Aug 14 23:23:01 PDT 2026
+Sat Aug 15 23:23:01 PDT 2026
 /home1/kdeweese/config_KD/modules_KD.sh: line 9: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 12: module: command not found
 /home1/kdeweese/config_KD/modules_KD.sh: line 18: module: command not found
 git version 2.43.7
 User: kdews
-Auto-commit: Fri Aug 14 23:23:01 PDT 2026
+Auto-commit: Sat Aug 15 23:23:01 PDT 2026
 /home1/kdeweese/scripts/compare-s-lat-vcfs/
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -56,32 +56,15 @@ To github.com:kdews/s-latissima-de.git
 updating local tracking ref 'refs/remotes/origin/main'
 Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-genome-v2/
-add 'assemblies_metadata/corteva_v1.yaml'
-add 'assemblies_metadata/corteva_v2.yaml'
-add 'assemblies_metadata/ectocarpus_liu2024.yaml'
-add 'assemblies_metadata/ilvo.yaml'
-add 'assemblies_metadata/japonica_li2025.yaml'
-add 'assemblies_metadata/lindell_v0.yaml'
-add 'assemblies_metadata/lindell_v1.yaml'
-add 'assemblies_metadata/roscoff_v1.yaml'
-add 'assemblies_metadata/roscoff_v2.yaml'
-add 'busco_compare.sbatch'
-add 'eval_genomes.sh'
-add 'genespace.sbatch'
-add 'genomes_metadata.tsv'
-add 'get_data.sbatch'
-add 'genomes_metadata_backup.tsv'
-add 'yaml_to_metadata.R'
-add 'yaml_to_metadata.sbatch'
-[main 5da652c] Auto-commit: Fri Aug 14 23:23:01 PDT 2026
- 17 files changed, 296 insertions(+), 32 deletions(-)
- create mode 100644 genomes_metadata_backup.tsv
- create mode 100644 yaml_to_metadata.R
- create mode 100644 yaml_to_metadata.sbatch
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
 Pushing to github.com:kdews/s-latissima-genome-v2.git
 To github.com:kdews/s-latissima-genome-v2.git
-   f6d11b4..5da652c  main -> main
+ = [up to date]      main -> main
 updating local tracking ref 'refs/remotes/origin/main'
+Everything up-to-date
 /home1/kdeweese/scripts/s-latissima-genome/
 On branch main
 Your branch is up to date with 'origin/main'.
