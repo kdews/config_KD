@@ -14,9 +14,7 @@ source_file () {
   fi
 }
 config_dir="$HOME/config_KD"
-MODS="$config_dir/modules_KD.sh"
 FUNCS="$config_dir/functions_KD.sh"
-source_file "$MODS"
 source_file "$FUNCS"
 
 # Run auto-commit on all repositories containing a .git in ~/scripts
